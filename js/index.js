@@ -23,7 +23,7 @@ for(let i = 0; i < images.length; i++){
     images.id = i;
 
     let img = `<img src="${images[i].src}" alt="${images[i].name}" 
-                    onclick="addToFoundItems2(${i})"
+                    onclick="onClick(${i})"
                     id=${i} 
                     style="bottom: ${getRandomInt(0, 30) + "rem"};
                             left: ${getRandomInt(0, 60) + "rem"};"/>`;
@@ -34,6 +34,7 @@ for(let i = 0; i < images.length; i++){
 }
 
 console.log(foundItems)
+
 
 
 /* ------------------- F U N C T I O N S ---------------------------*/
@@ -48,8 +49,11 @@ function getRandomInt(a, b) {
     return Math.floor(Math.random() * last - 1) + first;
 }
 
-function addToFoundItems2(i){
+//For now I am using 2 functions to pass the image cause I couldnt inject the html directly.
+function onClick(i){
     addToFoundItems(images[i]);
+    displayInFooter(foundItems);
+
 }
 
 function addToFoundItems(image){
@@ -59,4 +63,19 @@ function addToFoundItems(image){
         foundItems.push(image)
     }
     console.log(foundItems)
+}
+
+function displayInFooter(foundItems){
+    let foundItemsSection = document.querySelector('#foundItems');
+    foundItemsSection.innerHTML = '';
+    console.log(foundItemsSection);
+    //display the array.
+    console.log(foundItems);
+
+    for(let i= 0; i < foundItems.length; i++){
+        let img = `<img src="${foundItems[i].src}" alt="${foundItems[i].name}" 
+                        style="width: 100px; height: 100px; margin-left: ${i *100}px"
+        />`
+        foundItemsSection.insertAdjacentHTML('beforeend', img);
+    }
 }
