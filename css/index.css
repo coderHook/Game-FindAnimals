@@ -19,7 +19,8 @@ html {
 }
 
 footer {
-    background-color: lightcoral;
+    color: white;
+    background-color: rgba(11, 90, 90, 0.5);
     height: 20vh
 }
 

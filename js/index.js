@@ -88,7 +88,7 @@ function displayInFooter(foundItems){
 
     for(let i= 0; i < foundItems.length; i++){
         let img = `<img src="${foundItems[i].src}" alt="${foundItems[i].name}" 
-                        style="width: 100px; height: 100px; margin-left: ${i *100}px"
+                        style="width: 100px; height: 100px; margin-left: ${i *150}px"
         />`
         foundItemsSection.insertAdjacentHTML('beforeend', img);
     }
