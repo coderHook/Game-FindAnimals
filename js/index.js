@@ -19,6 +19,16 @@ let i = 0;
 let main = document.querySelector('#searchField');
 let foundItems = [];
 
+let user = prompt("Please enter your name");
+
+console.log(user);
+if(user != null) {
+    console.log("im am inside user")
+    let userHtml = document.querySelector('.user');
+    userHtml.innerHTML = user;
+    console.log(userHtml);
+}
+
 for(let i = 0; i < images.length; i++){
     images.id = i;
 
@@ -34,6 +44,7 @@ for(let i = 0; i < images.length; i++){
 }
 
 console.log(foundItems)
+
 
 
 
@@ -53,7 +64,10 @@ function getRandomInt(a, b) {
 function onClick(i){
     addToFoundItems(images[i]);
     displayInFooter(foundItems);
-
+    if (foundItems.length === images.length) {
+        //setTimeout to display the alert after the img is set the alert.
+        setTimeout(function() {alert('You Won') }, 100);
+    }
 }
 
 function addToFoundItems(image){
@@ -78,4 +92,6 @@ function displayInFooter(foundItems){
         />`
         foundItemsSection.insertAdjacentHTML('beforeend', img);
     }
+
+    //Adding winning logic
 }
