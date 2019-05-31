@@ -19,6 +19,16 @@ let i = 0;
 let main = document.querySelector('#searchField');
 let foundItems = [];
 
+let user = prompt("Please enter your name");
+
+console.log(user);
+if(user != null) {
+    console.log("im am inside user")
+    let userHtml = document.querySelector('.user');
+    userHtml.innerHTML = user;
+    console.log(userHtml);
+}
+
 for(let i = 0; i < images.length; i++){
     images.id = i;
 
