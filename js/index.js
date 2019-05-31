@@ -16,6 +16,8 @@ let images = [
 
 let count = 0
 
+var audio = document.getElementById('bgaudio');
+audio.volume = 0.03;
 
 let main = document.querySelector('#searchField');
 let foundItems = [];
@@ -34,7 +36,7 @@ for(let i = 0; i < images.length; i++){
                     onclick="onClick(${i})" 
                     style="bottom: ${getRandomInt(0, 30) + "rem"};
                             left: ${getRandomInt(0, 60) + "rem"};
-                            width: ${getRandomInt(10, 20) + "%"};
+                            width: ${getRandomInt(10, 15) + "%"};
                             height: auto;
                             opacity: ${getRandomInt(3, 11) / 10}"/>`;
 
@@ -64,15 +66,29 @@ function onClick(i){
     //animal Dissapear
     animalDissapear(images[i].id);
 
+    //Sound bell
+    soundBell();
+
     //Increment Score
     displayInFooter(foundItems);
 
     if (foundItems.length === images.length) {
+ 
+
         //setTimeout to display the alert after the img is set the alert.
         setTimeout(function() {alert('You Won') }, 100);
-
+        let audio2 = new Audio("../sounds/Successful-sound.mp3");
+        audio2.volume = 0.3;
+        audio2.play();
     }
     
+}
+
+//Play bell on clicking right animal.
+function soundBell(){
+    let audio = new Audio("../sounds/bell.mp3");
+    audio.volume = 0.2;
+    audio.play();
 }
 
 //This function changes the opacity of the image to make the effect that the animal dissapear when founded.
