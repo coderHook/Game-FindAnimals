@@ -22,10 +22,8 @@ let foundItems = [];
 let user = prompt("Please enter your Name");
 let userHtml = document.querySelector('.user');
 
-console.log(user);
 if(user != null) {
-    userHtml.innerHTML = `${user}`;
-    console.log(getScore(count));
+    userHtml.innerHTML = `${user} | Your Score is: ${count}/${images.length}` ;
 } 
 
 for(let i = 0; i < images.length; i++){
@@ -99,8 +97,7 @@ function displayInFooter(foundItems){
 }
 
 function getScore(){   
-    console.log('this si the score ' + count);
-    
-    userHtml.innerHTML = `${user} Your Score is: ${count}/${images.length}`;
-    return count++;
+    count++;
+    userHtml.innerHTML = `${user} | Your Score is: ${count}/${images.length}`;
+    return count;
 }
