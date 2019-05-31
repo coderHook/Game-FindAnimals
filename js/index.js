@@ -14,20 +14,19 @@ let images = [
     }
 ];
 
-let i = 0;
+let count = 0
 
 let main = document.querySelector('#searchField');
 let foundItems = [];
 
-let user = prompt("Please enter your name");
+let user = prompt("Please enter your Name");
+let userHtml = document.querySelector('.user');
 
 console.log(user);
 if(user != null) {
-    console.log("im am inside user")
-    let userHtml = document.querySelector('.user');
-    userHtml.innerHTML = user;
-    console.log(userHtml);
-}
+    userHtml.innerHTML = `${user}`;
+    console.log(getScore(count));
+} 
 
 for(let i = 0; i < images.length; i++){
     images.id = i;
@@ -42,10 +41,6 @@ for(let i = 0; i < images.length; i++){
 
 
 }
-
-console.log(foundItems)
-
-
 
 
 /* ------------------- F U N C T I O N S ---------------------------*/
@@ -63,18 +58,24 @@ function getRandomInt(a, b) {
 //For now I am using 2 functions to pass the image cause I couldnt inject the html directly.
 function onClick(i){
     addToFoundItems(images[i]);
+    //Increment Score
     displayInFooter(foundItems);
     if (foundItems.length === images.length) {
         //setTimeout to display the alert after the img is set the alert.
         setTimeout(function() {alert('You Won') }, 100);
     }
+
+    
 }
 
 function addToFoundItems(image){
     console.log('im here');
     console.log(foundItems.includes(image.id))
     if(!foundItems.includes(image)) {
-        foundItems.push(image)
+
+        foundItems.push(image);
+        getScore(count);
+
     }
     console.log(foundItems)
 }
@@ -94,4 +95,11 @@ function displayInFooter(foundItems){
     }
 
     //Adding winning logic
+}
+
+function getScore(){   
+    console.log('this si the score ' + count);
+    
+    userHtml.innerHTML = `${user} Your Score is: ${count}/${images.length}`;
+    return count++;
 }
