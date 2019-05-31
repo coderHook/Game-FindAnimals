@@ -16,6 +16,7 @@ let images = [
 
 let count = 0
 
+
 let main = document.querySelector('#searchField');
 let foundItems = [];
 
@@ -27,14 +28,15 @@ if(user != null) {
 } 
 
 for(let i = 0; i < images.length; i++){
-    images.id = i;
+    images[i].id = i;
 
-    let img = `<img src="${images[i].src}" alt="${images[i].name}" 
-                    onclick="onClick(${i})"
-                    id=${i} 
+    let img = `<img id="a${i}" src="${images[i].src}" alt="${images[i].name}" 
+                    onclick="onClick(${i})" 
                     style="bottom: ${getRandomInt(0, 30) + "rem"};
                             left: ${getRandomInt(0, 60) + "rem"};
-                            opacity: ${getRandomInt(2, 11) / 10}"/>`;
+                            width: ${getRandomInt(10, 20) + "%"};
+                            height: auto;
+                            opacity: ${getRandomInt(3, 11) / 10}"/>`;
 
     main.insertAdjacentHTML('beforeend', img);
 
@@ -43,6 +45,7 @@ for(let i = 0; i < images.length; i++){
 
 
 /* ------------------- F U N C T I O N S ---------------------------*/
+
 function getRandomInt(a, b) {
     let first, 
         last;
@@ -57,26 +60,36 @@ function getRandomInt(a, b) {
 //For now I am using 2 functions to pass the image cause I couldnt inject the html directly.
 function onClick(i){
     addToFoundItems(images[i]);
+
+    //animal Dissapear
+    animalDissapear(images[i].id);
+
     //Increment Score
     displayInFooter(foundItems);
+
     if (foundItems.length === images.length) {
         //setTimeout to display the alert after the img is set the alert.
         setTimeout(function() {alert('You Won') }, 100);
-    }
 
+    }
     
 }
 
+//This function changes the opacity of the image to make the effect that the animal dissapear when founded.
+function animalDissapear(i){
+    let id_selected = document.getElementById(`a${i}`);
+    console.log(id_selected);
+    id_selected.style.opacity = 0;
+}
+
 function addToFoundItems(image){
-    console.log('im here');
-    console.log(foundItems.includes(image.id))
+
     if(!foundItems.includes(image)) {
 
         foundItems.push(image);
         getScore(count);
 
     }
-    console.log(foundItems)
 }
 
 function displayInFooter(foundItems){
