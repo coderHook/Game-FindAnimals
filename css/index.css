@@ -26,6 +26,7 @@ header {
     text-align: center
 }
 
+
 .gameTitle {
     margin: 0 auto
 }
@@ -46,5 +47,5 @@ img {
     width: 200px;
     height: 200px;
     position: absolute;
-    bottom:
+    cursor: pointer;
 }

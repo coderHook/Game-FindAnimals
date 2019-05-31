@@ -34,6 +34,8 @@ for(let i = 0; i < images.length; i++){
                     onclick="onClick(${i})" 
                     style="bottom: ${getRandomInt(0, 30) + "rem"};
                             left: ${getRandomInt(0, 60) + "rem"};
+                            width: ${getRandomInt(10, 20) + "%"};
+                            height: auto;
                             opacity: ${getRandomInt(3, 11) / 10}"/>`;
 
     main.insertAdjacentHTML('beforeend', img);
@@ -43,6 +45,7 @@ for(let i = 0; i < images.length; i++){
 
 
 /* ------------------- F U N C T I O N S ---------------------------*/
+
 function getRandomInt(a, b) {
     let first, 
         last;
@@ -63,9 +66,11 @@ function onClick(i){
 
     //Increment Score
     displayInFooter(foundItems);
+
     if (foundItems.length === images.length) {
         //setTimeout to display the alert after the img is set the alert.
         setTimeout(function() {alert('You Won') }, 100);
+
     }
     
 }
