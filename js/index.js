@@ -16,6 +16,8 @@ let images = [
 
 let count = 0
 
+var audio = document.getElementById('bgaudio');
+audio.volume = 0.03;
 
 let main = document.querySelector('#searchField');
 let foundItems = [];
@@ -34,7 +36,7 @@ for(let i = 0; i < images.length; i++){
                     onclick="onClick(${i})" 
                     style="bottom: ${getRandomInt(0, 30) + "rem"};
                             left: ${getRandomInt(0, 60) + "rem"};
-                            width: ${getRandomInt(10, 20) + "%"};
+                            width: ${getRandomInt(10, 15) + "%"};
                             height: auto;
                             opacity: ${getRandomInt(3, 11) / 10}"/>`;
 
