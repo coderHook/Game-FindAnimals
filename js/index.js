@@ -20,19 +20,21 @@ let main = document.querySelector('#searchField');
 let foundItems = [];
 
 for(let i = 0; i < images.length; i++){
+    images.id = i;
 
     let img = `<img src="${images[i].src}" alt="${images[i].name}" 
-    style="bottom: ${getRandomInt(0, 30) + "rem"};
-            left: ${getRandomInt(0, 60) + "rem"};
-            onclick="addToFoundItems(${images[i]})"/>`;
+                    onclick="addToFoundItems2(${i})"
+                    id=${i} 
+                    style="bottom: ${getRandomInt(0, 30) + "rem"};
+                            left: ${getRandomInt(0, 60) + "rem"};"/>`;
 
     main.insertAdjacentHTML('beforeend', img);
 
 
 }
 
-// Adding found items:
-console.log(foundItems);
+console.log(foundItems)
+
 
 /* ------------------- F U N C T I O N S ---------------------------*/
 function getRandomInt(a, b) {
@@ -46,10 +48,15 @@ function getRandomInt(a, b) {
     return Math.floor(Math.random() * last - 1) + first;
 }
 
+function addToFoundItems2(i){
+    addToFoundItems(images[i]);
+}
+
 function addToFoundItems(image){
     console.log('im here');
-    console.log(foundItems.includes(image))
+    console.log(foundItems.includes(image.id))
     if(!foundItems.includes(image)) {
         foundItems.push(image)
     }
+    console.log(foundItems)
 }
