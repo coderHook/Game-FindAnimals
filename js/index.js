@@ -17,16 +17,24 @@ let images = [
 let i = 0;
 
 let main = document.querySelector('#searchField');
+let foundItems = [];
+
 for(let i = 0; i < images.length; i++){
 
     let img = `<img src="${images[i].src}" alt="${images[i].name}" 
     style="bottom: ${getRandomInt(0, 30) + "rem"};
-            left: ${getRandomInt(0, 60) + "rem"}"/>`;
+            left: ${getRandomInt(0, 60) + "rem"};
+            onclick="addToFoundItems(${images[i]})"/>`;
+
     main.insertAdjacentHTML('beforeend', img);
+
+
 }
 
-console.log(img);
+// Adding found items:
+console.log(foundItems);
 
+/* ------------------- F U N C T I O N S ---------------------------*/
 function getRandomInt(a, b) {
     let first, 
         last;
@@ -38,3 +46,10 @@ function getRandomInt(a, b) {
     return Math.floor(Math.random() * last - 1) + first;
 }
 
+function addToFoundItems(image){
+    console.log('im here');
+    console.log(foundItems.includes(image))
+    if(!foundItems.includes(image)) {
+        foundItems.push(image)
+    }
+}
