@@ -37,6 +37,7 @@ console.log(foundItems)
 
 
 
+
 /* ------------------- F U N C T I O N S ---------------------------*/
 function getRandomInt(a, b) {
     let first, 
@@ -53,7 +54,10 @@ function getRandomInt(a, b) {
 function onClick(i){
     addToFoundItems(images[i]);
     displayInFooter(foundItems);
-
+    if (foundItems.length === images.length) {
+        //setTimeout to display the alert after the img is set the alert.
+        setTimeout(function() {alert('You Won') }, 100);
+    }
 }
 
 function addToFoundItems(image){
@@ -78,4 +82,6 @@ function displayInFooter(foundItems){
         />`
         foundItemsSection.insertAdjacentHTML('beforeend', img);
     }
+
+    //Adding winning logic
 }
