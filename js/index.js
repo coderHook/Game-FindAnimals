@@ -35,7 +35,8 @@ for(let i = 0; i < images.length; i++){
                     onclick="onClick(${i})"
                     id=${i} 
                     style="bottom: ${getRandomInt(0, 30) + "rem"};
-                            left: ${getRandomInt(0, 60) + "rem"};"/>`;
+                            left: ${getRandomInt(0, 60) + "rem"};
+                            opacity: ${getRandomInt(2, 11) / 10}"/>`;
 
     main.insertAdjacentHTML('beforeend', img);
 
